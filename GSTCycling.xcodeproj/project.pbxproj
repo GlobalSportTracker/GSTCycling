@@ -24,17 +24,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5E35A22D2FFBD48200A1ABD5 /* GSTCycling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSTCycling.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E35A22D2FFBD48200A1ABD5 /* GSTCycling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GSTCycling.app; path = "/Users/albut/Library/Mobile Documents/com~apple~CloudDocs/GSTCycling/build/Debug-iphoneos/GSTCycling.app"; sourceTree = "<absolute>"; };
 		5E35A23A2FFBD48500A1ABD5 /* GSTCyclingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GSTCyclingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E35A2442FFBD48500A1ABD5 /* GSTCyclingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GSTCyclingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		5E35A22F2FFBD48200A1ABD5 /* GSTCycling */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GSTCycling;
-			sourceTree = "<group>";
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5ECC9C672FFCED490020B6A6 /* Exceptions for "GSTCycling" folder in "GSTCycling" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				ContentView.swift,
+				GSTCyclingApp.swift,
+				Views/Home/HomeView.swift,
+			);
+			target = 5E35A22C2FFBD48200A1ABD5 /* GSTCycling */;
 		};
+		5ECC9C752FFCF03E0020B6A6 /* Exceptions for "GSTCycling" folder in "GSTCyclingTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			platformFiltersByRelativePath = {
+				App/GSTCycling.app = (ios, );
+			};
+			target = 5E35A2392FFBD48500A1ABD5 /* GSTCyclingTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
 		5E35A23D2FFBD48500A1ABD5 /* GSTCyclingTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GSTCyclingTests;
@@ -43,6 +58,15 @@
 		5E35A2472FFBD48500A1ABD5 /* GSTCyclingUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GSTCyclingUITests;
+			sourceTree = "<group>";
+		};
+		5ECC9C602FFCED480020B6A6 /* GSTCycling */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5ECC9C672FFCED490020B6A6 /* Exceptions for "GSTCycling" folder in "GSTCycling" target */,
+				5ECC9C752FFCF03E0020B6A6 /* Exceptions for "GSTCycling" folder in "GSTCyclingTests" target */,
+			);
+			path = GSTCycling;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,17 +99,16 @@
 		5E35A2242FFBD48200A1ABD5 = {
 			isa = PBXGroup;
 			children = (
-				5E35A22F2FFBD48200A1ABD5 /* GSTCycling */,
 				5E35A23D2FFBD48500A1ABD5 /* GSTCyclingTests */,
 				5E35A2472FFBD48500A1ABD5 /* GSTCyclingUITests */,
 				5E35A22E2FFBD48200A1ABD5 /* Products */,
+				5ECC9C602FFCED480020B6A6 /* GSTCycling */,
 			);
 			sourceTree = "<group>";
 		};
 		5E35A22E2FFBD48200A1ABD5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5E35A22D2FFBD48200A1ABD5 /* GSTCycling.app */,
 				5E35A23A2FFBD48500A1ABD5 /* GSTCyclingTests.xctest */,
 				5E35A2442FFBD48500A1ABD5 /* GSTCyclingUITests.xctest */,
 			);
@@ -106,9 +129,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				5E35A22F2FFBD48200A1ABD5 /* GSTCycling */,
 			);
 			name = GSTCycling;
 			packageProductDependencies = (
@@ -132,6 +152,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				5E35A23D2FFBD48500A1ABD5 /* GSTCyclingTests */,
+				5ECC9C602FFCED480020B6A6 /* GSTCycling */,
 			);
 			name = GSTCyclingTests;
 			packageProductDependencies = (
