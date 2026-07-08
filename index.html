@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Global Sports Tracker</title>
+  <style>
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(135deg,#06152f,#092a5e);color:white}
+    .wrap{max-width:900px;margin:auto;padding:70px 24px}
+    .badge{color:#f6b000;font-weight:700;letter-spacing:2px}
+    h1{font-size:52px;margin:12px 0}
+    p{font-size:20px;color:#dbe8ff;line-height:1.6}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px}
+    .card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:28px;text-decoration:none;color:white}
+    .card h2{margin:0 0 10px}
+    footer{margin-top:60px;color:#b8c8e8}
+  </style>
 </head>
 <body>
-  <h1>Global Sports Tracker</h1>
-  <p>Official support website.</p>
-  <p><a href="support.html">Support</a></p>
-  <p><a href="privacy.html">Privacy Policy</a></p>
+  <main class="wrap">
+    <div class="badge">GLOBAL SPORTS TRACKER</div>
+    <h1>Official Support Website</h1>
+    <p>Global Sports Tracker provides clean and organized sports tournament information for Apple devices.</p>
+
+    <div class="cards">
+      <a class="card" href="support.html">
+        <h2>Support</h2>
+        <p>Get help, report issues or contact the developer.</p>
+      </a>
+      <a class="card" href="privacy.html">
+        <h2>Privacy Policy</h2>
+        <p>Learn how Global Sports Tracker handles data and privacy.</p>
+      </a>
+    </div>
+
+    <footer>
+      Developed by Selçuk Albut<br>
+      Contact: selcukalbut@me.com
+    </footer>
+  </main>
 </body>
 </html>
