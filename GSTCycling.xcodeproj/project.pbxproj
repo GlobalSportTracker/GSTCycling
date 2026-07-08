@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5E35A22D2FFBD48200A1ABD5 /* GSTCycling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GSTCycling.app; path = "/Users/albut/Library/Mobile Documents/com~apple~CloudDocs/GSTCycling/build/Debug-iphoneos/GSTCycling.app"; sourceTree = "<absolute>"; };
 		5E35A23A2FFBD48500A1ABD5 /* GSTCyclingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GSTCyclingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E35A2442FFBD48500A1ABD5 /* GSTCyclingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GSTCyclingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EFD94B52FFE817E00009490 /* GSTCycling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSTCycling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -39,13 +39,6 @@
 				Views/Home/HomeView.swift,
 			);
 			target = 5E35A22C2FFBD48200A1ABD5 /* GSTCycling */;
-		};
-		5ECC9C752FFCF03E0020B6A6 /* Exceptions for "GSTCycling" folder in "GSTCyclingTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			platformFiltersByRelativePath = {
-				App/GSTCycling.app = (ios, );
-			};
-			target = 5E35A2392FFBD48500A1ABD5 /* GSTCyclingTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -64,7 +57,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				5ECC9C672FFCED490020B6A6 /* Exceptions for "GSTCycling" folder in "GSTCycling" target */,
-				5ECC9C752FFCF03E0020B6A6 /* Exceptions for "GSTCycling" folder in "GSTCyclingTests" target */,
 			);
 			path = GSTCycling;
 			sourceTree = "<group>";
@@ -111,6 +103,7 @@
 			children = (
 				5E35A23A2FFBD48500A1ABD5 /* GSTCyclingTests.xctest */,
 				5E35A2442FFBD48500A1ABD5 /* GSTCyclingUITests.xctest */,
+				5EFD94B52FFE817E00009490 /* GSTCycling.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,7 +127,7 @@
 			packageProductDependencies = (
 			);
 			productName = GSTCycling;
-			productReference = 5E35A22D2FFBD48200A1ABD5 /* GSTCycling.app */;
+			productReference = 5EFD94B52FFE817E00009490 /* GSTCycling.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5E35A2392FFBD48500A1ABD5 /* GSTCyclingTests */ = {
