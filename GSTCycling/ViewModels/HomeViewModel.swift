@@ -11,6 +11,12 @@ import Observation
 @Observable
 final class HomeViewModel {
 
+    private let repository: RaceRepositoryProtocol
+
+    init(repository: RaceRepositoryProtocol = RaceRepository()) {
+        self.repository = repository
+    }
+
     let stage = Stage(
         raceName: "Tour de France",
         stageName: "Stage 5",
@@ -24,7 +30,11 @@ final class HomeViewModel {
         isLive: true
     )
 
-    var raceName: String { stage.raceName }
+    var currentRace: Race {
+        repository.currentRace()
+    }
+
+    var raceName: String { currentRace.name }
     var stageName: String { stage.stageName }
     var startLocation: String { stage.startLocation }
     var finishLocation: String { stage.finishLocation }
