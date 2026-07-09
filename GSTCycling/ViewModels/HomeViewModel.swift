@@ -41,6 +41,7 @@ final class HomeViewModel {
     var distance: String { stage.distance }
     var stageType: String { stage.stageType.rawValue }
     var startTime: String { stage.startTime }
+    var finishTime: String { stage.finishTime ?? "-" }
     var remainingDistance: String { stage.remainingDistance ?? "-" }
     var isLive: Bool { stage.isLive }
 
@@ -57,4 +58,24 @@ final class HomeViewModel {
     var windSpeed = "21 km/h"
 
     var temperature = "24°C"
+    
+    var todaysRaceCount: Int {
+        1
+    }
+
+    var currentTemperature: String {
+        temperature
+    }
+
+    var stageProgressText: String {
+        "\(remainingDistance) left"
+    }
+
+    var favoriteRiders: [Rider] {
+        Array(SampleData.riders.prefix(3))
+    }
+
+    var favoriteRidersCountText: String {
+        "\(favoriteRiders.count) riders"
+    }
 }

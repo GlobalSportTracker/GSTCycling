@@ -17,6 +17,7 @@ struct HomeView: View {
                     liveStageCard
                     todaysStageCard
                     dashboardGrid
+                    favoriteRidersSection
                     quickActionsSection
                 }
                 .padding(.horizontal, 20)
@@ -68,14 +69,68 @@ struct HomeView: View {
                     .font(AppTypography.title)
                     .foregroundStyle(.white)
                 
-                Text("\(viewModel.stageName) · \(viewModel.startLocation) → \(viewModel.finishLocation)")
+                Text("\(viewModel.stageName) · \(viewModel.stageType)")
                     .font(AppTypography.subheadline)
                     .foregroundStyle(.white.opacity(0.82))
             }
             
+            HStack(spacing: 10) {
+                Text(viewModel.startLocation)
+                    .font(AppTypography.headline.weight(.semibold))
+                    .foregroundStyle(.white)
+
+                Image(systemName: "arrow.right")
+                    .foregroundStyle(.white.opacity(0.8))
+
+                Text(viewModel.finishLocation)
+                    .font(AppTypography.headline.weight(.semibold))
+                    .foregroundStyle(.white)
+
+                Spacer()
+            }
+
+            VStack(alignment: .leading, spacing: 8) {
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        Capsule()
+                            .fill(.white.opacity(0.18))
+                            .frame(height: 8)
+
+                        Capsule()
+                            .fill(AppColors.live)
+                            .frame(width: geometry.size.width * 0.38, height: 8)
+                    }
+                }
+                .frame(height: 8)
+
+                HStack {
+                    Text("Stage progress")
+                        .font(AppTypography.caption)
+                        .foregroundStyle(.white.opacity(0.7))
+
+                    Spacer()
+
+                    Text(viewModel.stageProgressText)
+                        .font(AppTypography.caption.weight(.semibold))
+                        .foregroundStyle(.white.opacity(0.9))
+                }
+
+                HStack {
+                    Text(viewModel.startTime)
+                        .font(AppTypography.caption2)
+                        .foregroundStyle(.white.opacity(0.65))
+
+                    Spacer()
+
+                    Text(viewModel.finishTime)
+                        .font(AppTypography.caption2)
+                        .foregroundStyle(.white.opacity(0.65))
+                }
+            }
+            
             HStack(spacing: 14) {
-                liveMetric(title: "Leader", value: "Breakaway")
-                liveMetric(title: "Peloton", value: "+2'50\"")
+                liveMetric(title: "Leader", value: viewModel.leaderName)
+                liveMetric(title: "Peloton", value: viewModel.pelotonGap)
                 liveMetric(title: "Wind", value: viewModel.windSpeed)
             }
             
@@ -165,10 +220,44 @@ struct HomeView: View {
     
     private var dashboardGrid: some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-            dashboardCard(icon: "calendar", title: "Today's Race", value: "3 events")
-            dashboardCard(icon: "cloud.sun", title: "Weather", value: "30°C")
-            dashboardCard(icon: "star", title: "Favorites", value: "8 riders")
+            dashboardCard(
+                icon: "calendar",
+                title: "Today's Race",
+                value: "\(viewModel.todaysRaceCount) events"
+            )
+            dashboardCard(
+                icon: "cloud.sun",
+                title: "Weather",
+                value: viewModel.currentTemperature
+            )
+            dashboardCard(
+                icon: "star",
+                title: "Favorites",
+                value: viewModel.favoriteRidersCountText
+            )
             dashboardCard(icon: "trophy", title: "Standings", value: "Updated")
+        }
+    }
+
+    private var favoriteRidersSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                Text("Favorite Riders")
+                    .font(AppTypography.title3)
+                    .foregroundStyle(AppColors.textPrimary)
+
+                Spacer()
+
+                Text("View All")
+                    .font(AppTypography.caption.weight(.semibold))
+                    .foregroundStyle(AppColors.primary)
+            }
+
+            VStack(spacing: 12) {
+                ForEach(viewModel.favoriteRiders) { rider in
+                    favoriteRiderRow(rider)
+                }
+            }
         }
     }
     
@@ -234,6 +323,46 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
     
+    private func favoriteRiderRow(_ rider: Rider) -> some View {
+        HStack(spacing: 14) {
+            ZStack {
+                Circle()
+                    .fill(AppColors.secondaryBackground)
+                    .frame(width: 44, height: 44)
+
+                Text(String(rider.firstName.prefix(1)) + String(rider.lastName.prefix(1)))
+                    .font(AppTypography.caption.weight(.bold))
+                    .foregroundStyle(AppColors.primary)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(rider.fullName)
+                    .font(AppTypography.headline)
+                    .foregroundStyle(AppColors.textPrimary)
+
+                Text("\(rider.nationality) · \(rider.team.shortName) · \(rider.specialty.rawValue)")
+                    .font(AppTypography.caption)
+                    .foregroundStyle(AppColors.textSecondary)
+                    .lineLimit(1)
+            }
+
+            Spacer()
+
+            if let bibNumber = rider.bibNumber {
+                Text("#\(bibNumber)")
+                    .font(AppTypography.caption.weight(.semibold))
+                    .foregroundStyle(AppColors.textSecondary)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(AppColors.secondaryBackground)
+                    .clipShape(Capsule())
+            }
+        }
+        .padding()
+        .background(AppColors.cardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+
     private func quickAction(icon: String, title: String, subtitle: String) -> some View {
         HStack(spacing: 14) {
             Image(systemName: icon)
@@ -268,3 +397,4 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
