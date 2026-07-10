@@ -8,29 +8,52 @@
 import SwiftUI
 
 struct RaceView: View {
+    @State private var viewModel = HomeViewModel()
+    
     var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
-                Image(systemName: "flag.checkered")
-                    .font(.system(size: 60))
-                    .foregroundStyle(AppColors.primary)
-
-                Text("Race Center")
-                    .font(AppTypography.largeTitle)
-                    .foregroundStyle(AppColors.textPrimary)
-
-                Text("Race information, results and classifications will appear here.")
-                    .font(AppTypography.body)
-                    .foregroundStyle(AppColors.textSecondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 24) {
+                    headerSection
+                    CurrentRaceCard(
+                        raceName: viewModel.raceName,
+                        stageName: viewModel.stageName,
+                        stageType: viewModel.stageType,
+                        startLocation: viewModel.startLocation,
+                        finishLocation: viewModel.finishLocation,
+                        distance: viewModel.distance,
+                        startTime: viewModel.startTime,
+                        finishTime: viewModel.finishTime
+                    )
+                    StageOverviewCard(
+                        distance: viewModel.distance,
+                        stageType: viewModel.stageType
+                    )
+                    UpcomingStagesCard()
+                    ClassificationsCard()
+                    RecentResultsCard()
+                    RaceCalendarCard()
+                    
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
+                .padding(.bottom, 32)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(AppColors.background)
-            .navigationTitle("Race")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
+
+    private var headerSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Race Center")
+                .font(AppTypography.largeTitle)
+                .foregroundStyle(AppColors.textPrimary)
+
+            Text("Race information, stages and classifications.")
+                .font(AppTypography.body)
+                .foregroundStyle(AppColors.textSecondary)
+        }
+    }
+    
 }
 
 #Preview {
